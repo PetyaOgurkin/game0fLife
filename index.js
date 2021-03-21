@@ -12,12 +12,13 @@ let TIME = document.querySelector('#time').value;
 const WIDTH = (canvas.width / SIZE).toFixed()
 const HEIGHT = (canvas.height / SIZE).toFixed()
 
-let field = [];
+
+let field = []
 
 function generation() {
     field = []
     for (let i = 0; i < WIDTH; i++) {
-        field.push([])
+        field.push([]);
         for (let j = 0; j < HEIGHT; j++) {
             if (i === 0 || j === 0 || i === WIDTH - 1 || j === HEIGHT - 1) {
                 field[i].push(0)
@@ -28,12 +29,19 @@ function generation() {
     }
 }
 
-generation()
+function updateField() {
+    for (let i = 0; i < WIDTH; i++) {
+        for (let j = 0; j < HEIGHT; j++) {
+            if (field[i][j] === 2)
+                field[i][j] = 1;
+        }
+    }
+}
 
 function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < field.length; i++) {
-        for (let j = 0; j < field[i].length; j++) {
+    for (let i = 0; i < WIDTH; i++) {
+        for (let j = 0; j < HEIGHT; j++) {
             if (field[i][j] === 1) {
                 context.fillRect(i * SIZE, j * SIZE, SIZE, SIZE);
             }
@@ -42,8 +50,8 @@ function render() {
 }
 
 function logics() {
-    for (let i = 1; i < field.length - 1; i++) {
-        for (let j = 1; j < field[i].length - 1; j++) {
+    for (let i = 1; i < WIDTH - 1; i++) {
+        for (let j = 1; j < HEIGHT - 1; j++) {
             let neighbors = 0;
 
             field[i - 1][j - 1] === 1 && neighbors++
@@ -57,7 +65,7 @@ function logics() {
 
             if (field[i][j] === 0) {
                 if (BORN.includes(neighbors.toString())) {
-                    field[i][j] = 1;
+                    field[i][j] = 2;
                 }
 
             } else {
@@ -67,11 +75,13 @@ function logics() {
             }
         }
     }
+
 }
 
 function game() {
     render()
     logics()
+    updateField()
 }
 
 document.querySelector('#applySettings').addEventListener('click', () => {
@@ -87,7 +97,7 @@ let tick;
 let process = false;
 
 document.querySelector('#startGame').addEventListener('click', () => {
-    generation()
+    generation();
     clearInterval(tick);
     tick = setInterval(game, TIME);
     process = true;
