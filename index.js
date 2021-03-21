@@ -9,8 +9,8 @@ let SIZE = document.querySelector('#size').value;
 let LEVEL = document.querySelector('#level').value;
 let TIME = document.querySelector('#time').value;
 
-const WIDTH = (canvas.width / SIZE).toFixed()
-const HEIGHT = (canvas.height / SIZE).toFixed()
+let WIDTH = (canvas.width / SIZE).toFixed()
+let HEIGHT = (canvas.height / SIZE).toFixed()
 
 
 let field = []
@@ -90,6 +90,8 @@ document.querySelector('#applySettings').addEventListener('click', () => {
     SIZE = document.querySelector('#size').value;
     LEVEL = document.querySelector('#level').value;
     TIME = document.querySelector('#time').value;
+    WIDTH = (canvas.width / SIZE).toFixed()
+    HEIGHT = (canvas.height / SIZE).toFixed()
 })
 
 
