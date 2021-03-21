@@ -23,7 +23,7 @@ function generation() {
             if (i === 0 || j === 0 || i === WIDTH - 1 || j === HEIGHT - 1) {
                 field[i].push(0)
             } else {
-                (Math.random() * 100).toFixed() < LEVEL ? field[i].push(1) : field[i].push(0)
+                +(Math.random() * 100).toFixed() < LEVEL ? field[i].push(1) : field[i].push(0)
             }
         }
     }
