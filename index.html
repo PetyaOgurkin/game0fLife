@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .container {
+            width: 1440px;
+            height: 720px;
+            margin-top: 12px;
+            margin-left: 64px;
+            border: solid red 3px;
+        }
+
+        .settings {
+            margin-left: 64px;
+            margin-top: 12px;
+        }
+
+        .settings-item {
+            margin-bottom: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <canvas width="1440" height="720" id="mainWindow"></canvas>
+    </div>
+
+    <div class="settings">
+
+        <div class="settings-item">
+            <span>B</span>
+            <input type="number" max="8" min="0" step="1" value="3" id="born">
+        </div>
+        <div class="settings-item">
+            <span>S</span>
+            <input type="number" max="8" min="0" step="1" value="23" id="survive">
+        </div>
+
+        <div class="settings-item">
+            <span>level</span>
+            <input type="number" max="100" min="0" step="5" value="10" id="level">
+        </div>
+        <div class="settings-item">
+            <span>size</span>
+            <input type="number" max="50" min="1" step="1" value="3" id="size">
+        </div>
+        <div class="settings-item">
+            <span>time</span>
+            <input type="number" max="2000" min="10" step="30" value="50" id="time">
+        </div>
+
+        <div>
+            <button id="applySettings">Apply</button> <button id="startGame">Start</button> <button id="pauseGame">Pause/Resume</button>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
