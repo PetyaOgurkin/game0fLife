@@ -12,7 +12,6 @@ let TIME = document.querySelector('#time').value;
 let WIDTH = (canvas.width / SIZE).toFixed()
 let HEIGHT = (canvas.height / SIZE).toFixed()
 
-
 let field = []
 
 function generation() {
@@ -42,6 +41,10 @@ function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < WIDTH; i++) {
         for (let j = 0; j < HEIGHT; j++) {
+            if (field[i][j] === 2) {
+                field[i][j] = 1;
+            }
+
             if (field[i][j] === 1) {
                 context.fillRect(i * SIZE, j * SIZE, SIZE, SIZE);
             }
@@ -81,7 +84,7 @@ function logics() {
 function game() {
     render()
     logics()
-    updateField()
+    // updateField()
 }
 
 document.querySelector('#applySettings').addEventListener('click', () => {
@@ -93,7 +96,6 @@ document.querySelector('#applySettings').addEventListener('click', () => {
     WIDTH = (canvas.width / SIZE).toFixed()
     HEIGHT = (canvas.height / SIZE).toFixed()
 })
-
 
 let tick;
 let process = false;
@@ -114,3 +116,6 @@ document.querySelector('#pauseGame').addEventListener('click', () => {
         process = true
     }
 })
+
+
+
